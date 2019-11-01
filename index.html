@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title> Loan Calculation </title>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+		 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	</head>
+
+	<body>
+		<select id="opt">
+			<option >Monthly Payment</option>
+			<option >Time Left Payment</option>
+		</select>
+		<input type ="submit"  id ="submit" value ="Submit" ></td>
+		<br>
+		-------------------------------------------------------------------------
+		<div id="pageLoad"> </div>
+		<script>
+			$(document).ready(function(){
+			 
+			   
+				$('#submit').click(function(){
+					
+					 var option = document.getElementById('opt').value;
+					 
+					 if (option == 'Monthly Payment'){
+						$('#pageLoad').load('monthPayment.html');
+						
+						
+						//document.getElementById('pageLoad').innerHTML = 'There are 1' 
+						
+					 }
+					 else{
+						$('#pageLoad').load("monthLeft.html");
+						//document.getElementById('pageLoad').innerHTML = 'There are 2' 
+							
+					 }
+					// alert(option);
+					
+				});
+				
+				
+			});
+			
+		
+		</script>
+	</body>
+	
+	
+</html>

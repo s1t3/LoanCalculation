@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title> Calculation </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<table>
+			<tr>
+				<td>Loan Amount</td>
+				<td><input id="loan" type="text" ></td>
+			</tr>
+			
+			<tr>
+				<td>Interest Rate</td>
+				<td><input id="intRate" type="text" ></td>
+			</tr>
+			
+			<tr>
+				<td>Monthly Payment </td>
+				<td><input id="payment" type="text"></td>
+			</tr>
+		
+		</table>
+			<input type ="submit"  id ="submit" value ="Submit" ></td>
+			
+			<div id='monthLeft'> </div>
+	
+	</body>
+	
+	<script>
+		$(document).ready(function(){
+			 
+			   
+			$('#submit').click(function(){
+			// Pull required values from user inputs 
+			   var loan = document.getElementById('loan').value;
+			   var intRate = document.getElementById('intRate').value;
+			   var payment = document.getElementById('payment').value;
+			 
+			 var monthlyRate = intRate / 100 / 12;
+			 
+			 //var monthLeft = Math.log(1-loan*monthlyRate/payment);
+			
+			 var monthLeft = -(Math.log(1-loan*monthlyRate/payment)/Math.log(1+monthlyRate))
+			 
+			  //var value = Math.log(2);
+			  
+			  if (loan.length == 0 || intRate.length == 0 || payment.length == 0){
+					alert("Please fill all the requirements!");
+				}
+				
+				else {
+						document.getElementById('monthLeft').innerHTML = 'There are ' + monthLeft.toFixed(1) + ' payments in ' + (monthLeft/12).toFixed(1) + ' years'
+				}
+				
+			});
+		});
+	</script>
+</html>

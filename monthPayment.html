@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title> Calculation </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<table>
+			<tr>
+				<td>Loan Amount</td>
+				<td><input id="loan" type="text" ></td>
+			</tr>
+			
+			<tr>
+				<td>Interest Rate</td>
+				<td><input id="intRate" type="text" ></td>
+			</tr>
+			
+			<tr>
+				<td>Num of Years </td>
+				<td><input id="numYears" type="text"></td>
+			</tr>
+		
+		</table>
+			<input type ="submit"  id ="submit" value ="Submit" ></td>
+			
+			<div id='monthlyPayment'> </div>
+	
+	</body>
+	
+	<script>
+		$(document).ready(function(){
+			 
+			   
+			$('#submit').click(function(){
+			// Pull required values from user inputs 
+			   var loan = document.getElementById('loan').value;
+			   var intRate = document.getElementById('intRate').value;
+			   var numYears = document.getElementById('numYears').value;
+			 
+			 
+				if (loan.length == 0 || intRate.length == 0 || numYears.length == 0){
+					alert("Please fill all the requirements!");
+				}
+				
+				else {
+				 // Calculate monthlyPayment 
+					var numMonths = numYears * 12; 
+					var monthlyRate = intRate / 100 / 12;
+					var monthlyPayment = loan*(monthlyRate*(1 + monthlyRate)**numMonths)/((1 + monthlyRate)**numMonths -1);
+					
+					var initInterest = loan * monthlyRate;
+					var initPrincipal = monthlyPayment - initInterest;
+					
+					var SecInterest = (loan - monthlyPayment) * monthlyRate;
+					var SecPrincipal = monthlyPayment - SecInterest;
+					
+					var ThirdInterest = (loan - monthlyPayment*2) * monthlyRate;
+					var ThirdPrincipal = monthlyPayment - ThirdInterest;
+					
+					var FourInterest = (loan - monthlyPayment*3) * monthlyRate;
+					var FourPrincipal = monthlyPayment - FourInterest;
+					
+					document.getElementById('monthlyPayment').innerHTML = 'Your monthly Payment is ' + monthlyPayment.toFixed(2) + '<br>' 
+					+ 'Initial Interest is ' + initInterest.toFixed(2) + '<br>'
+					+ 'Initial Principal is ' + initPrincipal.toFixed(2) + '<br>'
+					+ '--------------------------------------------------'+ '<br>'
+					+ '2nd Payment Interest is ' + SecInterest.toFixed(2) + '<br>'
+					+ '2nd Payment Principal is ' + SecPrincipal.toFixed(2)+ '<br>'
+					+ '--------------------------------------------------'+ '<br>'
+					+ '3rd Payment Interest is ' + ThirdInterest.toFixed(2) + '<br>'
+					+ '3rd Payment Principal is ' + ThirdPrincipal.toFixed(2)+ '<br>'
+					+ '--------------------------------------------------'+ '<br>'
+					+ '4th Payment Interest is ' + FourInterest.toFixed(2) + '<br>'
+					+ '4th Payment Principal is ' + FourPrincipal.toFixed(2);
+					
+					
+					
+					//alert(payment);
+				}
+			});
+		});
+	</script>
+</html>
