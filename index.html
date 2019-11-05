@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title> Loan Calculation </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 		 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	</head>
@@ -10,7 +11,7 @@
 			<option >Monthly Payment</option>
 			<option >Time Left Payment</option>
 		</select>
-		<input type ="submit"  id ="submit2" value ="Submit" ></td>
+		<input type ="submit"  id ="submit" value ="Submit" ></td>
 		<br>
 		-------------------------------------------------------------------------
 		<div id="pageLoad"> </div>
@@ -18,7 +19,7 @@
 			$(document).ready(function(){
 			 
 			   
-				$('#submit2').click(function(){
+				$('#submit').click(function(){
 					
 					 var option = document.getElementById('opt').value;
 					 
